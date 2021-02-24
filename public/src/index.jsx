@@ -7,16 +7,21 @@ import GlobalStyle from './styled/globalStyles.js';
 
 import {
   RecentEventsAnnouncements,
-  RecentEventsAnnouncementsContainer,
-  RecentEventsAnnouncementsTitleBar,
-  RecentEventsAnnouncementsItemsContainer,
-  RecentEventsAnnouncementsRefreshBar,
-  RecentEventsAnnouncementsTitle,
+  REAContainer,
+  REATitleBar,
+  REATitle,
+  REAViewAllButton,
+  REAItemsContainer,
+  REARefreshBar,
 } from './styled';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      eventsAndAnnouncementsData: [],
+      eventsAndAnnouncementsPhotos: [],
+    };
   }
 
   componentDidMount() {
@@ -27,7 +32,10 @@ class App extends React.Component {
       method: 'GET',
       url: `/events_and_announcements/?id=${id}`,
       success: (data) => {
-        console.log(data);
+        this.setState({
+          eventsAndAnnouncementsData: data.data,
+          eventsAndAnnouncementsPhotos: data.pictures,
+        });
       },
       error: (err) => {
         console.log(err);
@@ -39,20 +47,21 @@ class App extends React.Component {
     return (
       <RecentEventsAnnouncements>
         <GlobalStyle />
-        <RecentEventsAnnouncementsContainer>
-          <RecentEventsAnnouncementsTitleBar>
-            <RecentEventsAnnouncementsTitle>Recent Events &#38; Announcements</RecentEventsAnnouncementsTitle>
-          </RecentEventsAnnouncementsTitleBar>
-          <RecentEventsAnnouncementsItemsContainer>
+        <REAContainer>
+          <REATitleBar>
+            <REATitle>Recent Events &#38; Announcements</REATitle>
+            <REAViewAllButton>View All</REAViewAllButton>
+          </REATitleBar>
+          <REAItemsContainer>
             <div>Hello</div>
             <div>-there-</div>
             <div>friend</div>
-          </RecentEventsAnnouncementsItemsContainer>
-          <RecentEventsAnnouncementsRefreshBar>
+          </REAItemsContainer>
+          <REARefreshBar>
             <div>Button-</div>
             <div>here</div>
-          </RecentEventsAnnouncementsRefreshBar>
-        </RecentEventsAnnouncementsContainer>
+          </REARefreshBar>
+        </REAContainer>
       </RecentEventsAnnouncements>
     );
   }

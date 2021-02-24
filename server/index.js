@@ -17,12 +17,20 @@ app.get('/events_and_announcements', async (req, res) => {
 
   try {
     const { data } = await axios.get(`http://localhost:3008/game_info/events/?id=${queryId}`);
-    responseData.gamePictures = data;
-    res.status(200).send(responseData);
+    responseData.pictures = data;
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
   }
+
+  db.getEventsAndAnnouncementDataForGame(queryId, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      responseData.data = data;
+      res.status(200).send(responseData);
+    }
+  });
 });
 
 module.exports = app;
