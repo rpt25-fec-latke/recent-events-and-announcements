@@ -3,6 +3,17 @@ import ReactDOM from 'react-dom';
 
 import $ from 'jquery';
 
+import GlobalStyle from './styled/globalStyles.js';
+
+import {
+  RecentEventsAnnouncements,
+  RecentEventsAnnouncementsContainer,
+  RecentEventsAnnouncementsTitleBar,
+  RecentEventsAnnouncementsItemsContainer,
+  RecentEventsAnnouncementsRefreshBar,
+  RecentEventsAnnouncementsTitle,
+} from './styled';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -26,9 +37,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        Hello
-      </div>
+      <RecentEventsAnnouncements>
+        <GlobalStyle />
+        <RecentEventsAnnouncementsContainer>
+          <RecentEventsAnnouncementsTitleBar>
+            <RecentEventsAnnouncementsTitle>Recent Events &#38; Announcements</RecentEventsAnnouncementsTitle>
+          </RecentEventsAnnouncementsTitleBar>
+          <RecentEventsAnnouncementsItemsContainer>
+            <div>Hello</div>
+            <div>-there-</div>
+            <div>friend</div>
+          </RecentEventsAnnouncementsItemsContainer>
+          <RecentEventsAnnouncementsRefreshBar>
+            <div>Button-</div>
+            <div>here</div>
+          </RecentEventsAnnouncementsRefreshBar>
+        </RecentEventsAnnouncementsContainer>
+      </RecentEventsAnnouncements>
     );
   }
 }
