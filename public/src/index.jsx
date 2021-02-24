@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import $ from 'jquery';
 
+import EventAnnouncementList from './components/EventAnnouncementList.jsx';
 import GlobalStyle from './styled/globalStyles.js';
 
 import {
@@ -32,6 +33,7 @@ class App extends React.Component {
       method: 'GET',
       url: `/events_and_announcements/?id=${id}`,
       success: (data) => {
+        console.log(data);
         this.setState({
           eventsAndAnnouncementsData: data.data,
           eventsAndAnnouncementsPhotos: data.pictures,
@@ -44,6 +46,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { eventsAndAnnouncementsData, eventsAndAnnouncementsPhotos } = this.state;
     return (
       <RecentEventsAnnouncements>
         <GlobalStyle />
@@ -53,9 +56,7 @@ class App extends React.Component {
             <REAViewAllButton>View All</REAViewAllButton>
           </REATitleBar>
           <REAItemsContainer>
-            <div>Hello</div>
-            <div>-there-</div>
-            <div>friend</div>
+            <EventAnnouncementList eventsAndAnnouncementsData={eventsAndAnnouncementsData} eventsAndAnnouncementsPhotos={eventsAndAnnouncementsPhotos.eventPics} />
           </REAItemsContainer>
           <REARefreshBar>
             <div>Button-</div>
