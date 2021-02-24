@@ -11,6 +11,14 @@ const db = mysql.createConnection({
 
 const seedDatabase = (numGames) => {
   let startingGameId = 1;
+  const currentDate = new Date();
+  const twoWeeksAgo = new Date();
+
+  const timeZoneOffset = currentDate.getTimezoneOffset();
+
+  currentDate.setMinutes(currentDate.getMinutes() - timeZoneOffset);
+  twoWeeksAgo.setMinutes(twoWeeksAgo.getMinutes() - timeZoneOffset);
+  twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
 
   const types = ['Contest', 'Challenge Event', 'Perks Event', 'Regular Update', 'Live-Stream / Broadcast'];
   const typesLength = types.length;
@@ -19,7 +27,7 @@ const seedDatabase = (numGames) => {
     let announcementNumber = 1;
 
     while (announcementNumber <= 2) {
-      const recentDate = faker.date.recent();
+      const recentDate = faker.date.between(currentDate, twoWeeksAgo);
       const year = recentDate.getFullYear();
       const month = (recentDate.getMonth() + 1).toString().length === 1 ? `0${recentDate.getMonth() + 1}` : recentDate.getMonth() + 1;
       const day = (recentDate.getDay() + 1).toString().length === 1 ? `0${recentDate.getDay() + 1}` : recentDate.getDay() + 1;

@@ -14,6 +14,8 @@ import {
   REAViewAllButton,
   REAItemsContainer,
   REARefreshBar,
+  REARefreshIcon,
+  RAERefreshButton,
 } from './styled';
 
 class App extends React.Component {
@@ -47,6 +49,16 @@ class App extends React.Component {
 
   render() {
     const { eventsAndAnnouncementsData, eventsAndAnnouncementsPhotos } = this.state;
+    let maxDate;
+    let month;
+    let day;
+
+    if (eventsAndAnnouncementsData[0]) {
+      maxDate = new Date(eventsAndAnnouncementsData[0].announcementDate);
+      month = maxDate.toLocaleString('default', { month: 'short' });
+      day = maxDate.toLocaleString('default', { day: 'numeric' });
+    }
+
     return (
       <RecentEventsAnnouncements>
         <GlobalStyle />
@@ -59,8 +71,8 @@ class App extends React.Component {
             <EventAnnouncementList eventsAndAnnouncementsData={eventsAndAnnouncementsData} eventsAndAnnouncementsPhotos={eventsAndAnnouncementsPhotos.eventPics} />
           </REAItemsContainer>
           <REARefreshBar>
-            <div>Button-</div>
-            <div>here</div>
+            <REARefreshIcon src="https://fec-latke-steam-reviews.s3-us-west-1.amazonaws.com/refresh.png"></REARefreshIcon>
+            <RAERefreshButton>{`See all updates (Latest: ${month} ${day})`}</RAERefreshButton>
           </REARefreshBar>
         </REAContainer>
       </RecentEventsAnnouncements>

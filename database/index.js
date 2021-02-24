@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
 });
 
 const getEventsAndAnnouncementDataForGame = (gameId, cb) => {
-  connection.query(`SELECT * FROM events_and_announcements WHERE gameId = ${gameId};`, (err, data) => {
+  connection.query(`SELECT * FROM events_and_announcements WHERE gameId = ${gameId} ORDER BY announcementDate DESC;`, (err, data) => {
     if (err) {
       cb(err, null);
     } else {

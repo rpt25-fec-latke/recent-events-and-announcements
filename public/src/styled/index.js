@@ -67,6 +67,25 @@ export const REARefreshBar = styled.div`
   display: flex;
 `;
 
+export const REARefreshIcon = styled.img`
+  height: 17px;
+  width: 17px;
+  padding-top: 7px;
+  margin-right: 10px;
+`;
+
+export const RAERefreshButton = styled.div`
+  border: solid 1px rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  font-size: 12px;
+  font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  padding: 5px 15px;
+  &:hover {
+    border: solid 1px white;
+  }
+`;
+
 //----------------------------------------
 // RE & A Item styled
 //----------------------------------------
