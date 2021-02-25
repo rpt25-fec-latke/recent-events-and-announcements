@@ -19,7 +19,6 @@ app.get('/events_and_announcements', async (req, res) => {
     const { data } = await axios.get(`http://3.137.75.100:3008/game_info/events/?id=${queryId}`);
     responseData.pictures = data;
   } catch (err) {
-    console.log(err);
     res.status(500).send(err);
   }
 
