@@ -9,7 +9,7 @@ const EventAnnouncementItem = ({ data: { type, announcementDate, description }, 
   const year = date.toLocaleString('default', { year: 'numeric' });
   const day = date.toLocaleString('default', { day: 'numeric' });
   const time = date.toLocaleString('default', { hour: 'numeric', minute: 'numeric', hour12: true });
-  console.log(time);
+
   return (
     <REAItemOuterContainer>
       <REAItemInnerContainer className="inner_container" url={photo}>

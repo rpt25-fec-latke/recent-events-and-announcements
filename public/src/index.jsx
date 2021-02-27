@@ -35,7 +35,6 @@ class App extends React.Component {
       method: 'GET',
       url: `/events_and_announcements/?id=${id}`,
       success: (data) => {
-        console.log(data);
         this.setState({
           eventsAndAnnouncementsData: data.data,
           eventsAndAnnouncementsPhotos: data.pictures,
