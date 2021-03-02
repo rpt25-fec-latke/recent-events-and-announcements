@@ -14,8 +14,8 @@ const EventAnnouncementItem = ({ data: { type, announcementDate, description }, 
     <REAItemOuterContainer>
       <REAItemInnerContainer className="inner_container" url={photo}>
         <REABottomInfoSection>
-          <REAType>{type}</REAType>
-          <READate>{`${weekday}, ${month} ${day}, ${year} ${time} PST`}</READate>
+          <REAType className="event_type">{type}</REAType>
+          <READate className="event_date">{`${weekday}, ${month} ${day}, ${year} ${time} PST`}</READate>
         </REABottomInfoSection>
       </REAItemInnerContainer>
       <REAHoverTextContainer className="hover_text">
