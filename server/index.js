@@ -16,7 +16,7 @@ app.get('/events_and_announcements', async (req, res) => {
   const responseData = {};
 
   try {
-    const { data } = await axios.get(`http://localhost:3008/game_info/events/?id=${queryId}`);
+    const { data } = await axios.get(`http://3.137.75.100:3008/game_info/events/?id=${queryId}`);
     responseData.pictures = data;
   } catch (err) {
     res.status(500).send(err);
@@ -33,5 +33,3 @@ app.get('/events_and_announcements', async (req, res) => {
 });
 
 module.exports = app;
-
-// http://3.137.75.100:3008/game_info/events/
